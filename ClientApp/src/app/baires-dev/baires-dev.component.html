@@ -1,0 +1,46 @@
+<h1>Baires Dev Test</h1>
+<div style="margin-bottom: 20px;margin-top: 20px;">
+    <input #file type="file" (change)="upload(file.files)" />
+    <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+    {{progress}}%
+    </span>
+    <span style="font-weight:bold;color:green;" *ngIf="message">
+    {{message}}
+    </span>
+    <button (click)="getFile()" [disabled]="!((blogPosts$ | async)?.length>0)" class="btn btn-primary float-right">Export File</button>
+</div>
+<!-- <button #file type="file" multiple (change)="upload(file.files)">Start</button> -->
+
+<div class="d-flex justify-content-center" *ngIf="loading">
+    <div class="spinner-grow text-primary" role="status"></div>
+    <div class="spinner-grow text-secondary" role="status"></div>
+    <div class="spinner-grow text-success" role="status"></div>
+    <div class="spinner-grow text-danger" role="status"></div>
+    <div class="spinner-grow text-warning" role="status"></div>
+    <div class="spinner-grow text-info" role="status"></div>
+    <div class="spinner-grow text-light" role="status"></div>
+</div>
+<div class="scrollable" *ngIf="(blogPosts$ | async)?.length>0">
+    <table class="table table-sm table-hover table-dark">
+        <thead>
+            <tr>
+                <th style="padding-left: 25px;">Name</th>
+                <th>Country</th>
+                <th>Industry</th>
+                <th>Role</th>
+                <th># of Recommendations</th>
+                <th># of Connections</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let blogPost of (blogPosts$ | async)">
+                <td style="padding-left: 25px;">{{ blogPost.name + blogPost.lastName }}</td>
+                <td>{{ blogPost.country }}</td>
+                <td>{{ blogPost.industry}}</td>
+                <td>{{ blogPost.currentRole }}</td>
+                <td>{{ blogPost.numberOfConnections}}</td>
+                <td>{{ blogPost.numberOfRecommendations}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
