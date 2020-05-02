@@ -29,11 +29,11 @@ For the Angular front-end we'll also use:
     Note: If you are running using Visual Studio Code, install dev certificates using command:
     dotnet dev-certs https --trust
 
-1. Delete the files in folder Migrations.
-2. Open Package Manager Console [Tools->Nuget Package Manager->Package Manager Console].
-3. And run this comands
+6. Delete the files in folder Migrations.
+7. Open Package Manager Console [Tools->Nuget Package Manager->Package Manager Console].
+8. And run this comands
 
-```
-Add-Migration Initial
-Update-Database
-```
+    ```
+    Add-Migration Initial
+    Update-Database
+    ```
